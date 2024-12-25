@@ -2,7 +2,8 @@ import type { DivIcon } from "leaflet";
 
 export async function createStationIcon(
   color: string | string[],
-  isBRT: boolean
+  isBRT: boolean,
+  isActive: boolean = true
 ): Promise<DivIcon> {
   const L = await import("leaflet");
 
@@ -29,7 +30,9 @@ export async function createStationIcon(
   const backgroundStyle = generateBackgroundStyle(color);
 
   const html = `
-    <div class="station-icon">
+    <div class="station-icon ${
+      isActive ? "" : "disabled"
+    }"> <!-- Apply 'disabled' class -->
       <div class="background-layer" style="${backgroundStyle}"></div>
       <div class="content-layer">
         ${

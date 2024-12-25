@@ -4,8 +4,8 @@ export const lineColors: any = {
   "3": "#00aeef", // Navy Blue Line
   "4": "#fedc16", // Yellow Line
   "5": "#008000", // Green Line
-  "6": "#800080", // Purple Line
-  "7": "#FFA500", // Orange Line
+  "6": "#f06ca9", // Purple Line
+  "7": "#7e3e98", // Orange Line
   BRT: "#666666", // Grey for BRT lines
 };
 
@@ -36,6 +36,5 @@ export const findIntersectionColor = (origin: string, destination: string) => {
       return d.indexOf(v.trim()) > -1;
     });
     return lineColors[overlap[0]];
-    // console.log(s, d);
   }
 };

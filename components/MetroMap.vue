@@ -68,7 +68,8 @@ async function renderStations() {
     const next = station.Next.split(",");
     next.forEach((n) => {
       const nextStation = visibleStations.value.find((s) => s.ID === n.trim());
-      if (nextStation) {
+
+      if (nextStation && Number(n) > 0) {
         const nextCoordinate = [
           parseFloat(nextStation.Latitude),
           parseFloat(nextStation.Longitude),
@@ -78,12 +79,13 @@ async function renderStations() {
           station["Line(s)"],
           nextStation["Line(s)"]
         );
-
-        L.polyline(data, {
-          color,
-          weight: 4,
-          opacity: 0.8,
-        }).addTo(map.value);
+        if (nextCoordinate[0] && nextCoordinate[1]) {
+          L.polyline(data, {
+            color,
+            weight: 4,
+            opacity: 0.8,
+          }).addTo(map.value);
+        }
       }
     });
   };
@@ -94,29 +96,35 @@ async function renderStations() {
     const color = findStationColor(line);
     const points: [number, number][] = [];
 
-    // for (const station of lineStation) {
     const lat = parseFloat(station.Latitude);
     const lng = parseFloat(station.Longitude);
 
     // Render each line
-    generateLineByStation(station, [lat, lng]);
+    if (lat && lng) generateLineByStation(station, [lat, lng]);
 
     points.push([lat, lng]);
 
     const isBRT = line === "BRT";
-    const icon = await createStationIcon(color, isBRT);
+    const icon = await createStationIcon(
+      color,
+      isBRT,
+      station["Is Active"] === "T"
+    );
     // Render Points
-    L.marker([lat, lng], { icon })
-      .addTo(map.value)
-      .on("click", () => {
-        selectedStation.value = station;
-      }).bindPopup(`
-          <div class="text-center">
-            <div class="font-bold">${station["Name English"]}</div>
-            <div class="font-bold">${station["Name Persian"]}</div>
-            <div class="text-sm text-gray-600">Line ${line}</div>
-          </div>
-        `);
+
+    if (lat && lng) {
+      L.marker([lat, lng], { icon })
+        .addTo(map.value)
+        .on("click", () => {
+          selectedStation.value = station;
+        }).bindPopup(`
+      <div class="text-center">
+      <div class="font-bold">${station["Name English"]}</div>
+      <div class="font-bold">${station["Name Persian"]}</div>
+      <div class="text-sm text-gray-600">Line ${line}</div>
+      </div>
+      `);
+    }
     // }
   }
 }

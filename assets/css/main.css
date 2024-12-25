@@ -43,6 +43,10 @@
   border-radius: 50%;
   overflow: hidden;
 }
+.station-icon.disabled {
+  filter: grayscale(100%); /* Convert to grayscale for a disabled look */
+  pointer-events: none; /* Prevent interaction */
+}
 
 .background-layer {
   position: absolute;

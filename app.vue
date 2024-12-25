@@ -23,7 +23,6 @@ useHead({
   bodyAttrs: {
     class: "test",
   },
-  script: [{ innerHTML: "console.log('Hello world')" }],
 });
 
 const colorMode = useColorMode();
