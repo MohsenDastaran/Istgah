@@ -1,8 +1,8 @@
 export const lineColors: any = {
   "1": "#FF0000", // Red Line
-  "2": "#0000FF", // Blue Line
-  "3": "#00008B", // Navy Blue Line
-  "4": "#FFD700", // Yellow Line
+  "2": "#283890", // Blue Line
+  "3": "#00aeef", // Navy Blue Line
+  "4": "#fedc16", // Yellow Line
   "5": "#008000", // Green Line
   "6": "#800080", // Purple Line
   "7": "#FFA500", // Orange Line

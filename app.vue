@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     class="min-h-screen transition-colors duration-200"
     :class="[colorMode.value === 'dark' ? 'dark bg-gray-900' : 'bg-gray-100']"
     :dir="$i18n.locale === 'fa' ? 'rtl' : 'ltr'"
@@ -9,21 +9,35 @@
 </template>
 
 <script setup lang="ts">
-import type { Station } from '~/types/station';
-import { stations } from '~/data/stations';
+import type { Station } from "~/types/station";
+import { stations } from "~/data/stations";
+
+useHead({
+  title: "Istgah",
+  meta: [
+    {
+      name: "description",
+      content: "Tehran Public transportation App - حمل و نقل عمومی مترو تهران",
+    },
+  ],
+  bodyAttrs: {
+    class: "test",
+  },
+  script: [{ innerHTML: "console.log('Hello world')" }],
+});
 
 const colorMode = useColorMode();
 const { locale } = useI18n();
 
 // Load saved preferences
 onMounted(() => {
-  const savedLocale = localStorage.getItem('preferred-locale');
-  const savedColorMode = localStorage.getItem('preferred-theme');
-  
+  const savedLocale = localStorage.getItem("preferred-locale");
+  const savedColorMode = localStorage.getItem("preferred-theme");
+
   if (savedLocale) {
     locale.value = savedLocale;
   }
-  
+
   if (savedColorMode) {
     colorMode.preference = savedColorMode;
   }
@@ -31,20 +45,23 @@ onMounted(() => {
 
 // Save preferences when changed
 watch(locale, (newLocale) => {
-  localStorage.setItem('preferred-locale', newLocale);
+  localStorage.setItem("preferred-locale", newLocale);
 });
 
-watch(() => colorMode.preference, (newMode) => {
-  localStorage.setItem('preferred-theme', newMode);
-});
+watch(
+  () => colorMode.preference,
+  (newMode) => {
+    localStorage.setItem("preferred-theme", newMode);
+  }
+);
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/earlyaccess/notonaskharabic.css');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/earlyaccess/notonaskharabic.css");
 
 :root {
-  --font-family-sans: 'Inter', 'Noto Naskh Arabic', sans-serif;
+  --font-family-sans: "Inter", "Noto Naskh Arabic", sans-serif;
 }
 
 html {

@@ -81,8 +81,8 @@ async function renderStations() {
 
         L.polyline(data, {
           color,
-          weight: 3,
-          opacity: 0.7,
+          weight: 4,
+          opacity: 0.8,
         }).addTo(map.value);
       }
     });
