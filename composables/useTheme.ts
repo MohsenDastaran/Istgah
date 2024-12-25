@@ -1,0 +1,1 @@
+// Remove this file since we'll handle theme in app.vue

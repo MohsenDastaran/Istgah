@@ -1,0 +1,25 @@
+{
+  "menu": {
+    "title": "Menu",
+    "about": "About Us",
+    "github": "GitHub Repository",
+    "install": "Install App",
+    "darkMode": "Dark Mode"
+  },
+  "search": {
+    "placeholder": "Search stations...",
+    "filters": {
+      "metro": "Metro",
+      "brt": "BRT"
+    }
+  },
+  "station": {
+    "showOnMap": "Show on Google Maps",
+    "getDirections": "Get Directions"
+  },
+  "about": {
+    "title": "About Tehran Metro Map",
+    "description": "This interactive map shows all metro and BRT stations in Tehran. You can search for stations, get directions, and view station information.",
+    "close": "Close"
+  }
+}
