@@ -14,6 +14,36 @@ const tileCache = localforage.createInstance({
   name: "tile-cache",
   storeName: "map-tiles",
 });
+// map vector cache:
+// Export all markers and polylines to IndexedDB
+// function exportMapVectors(map: Map) {
+//   const markersData: any[] = [];
+//   const polylinesData: any[] = [];
+
+//   map.eachLayer((layer) => {
+//     if (layer instanceof L.Marker) {
+//       // Store marker data (position, icon, popup content, etc.)
+//       markersData.push({
+//         type: "marker",
+//         position: layer.getLatLng(),
+//         iconData: layer.options.icon.options,
+//         popupContent: layer.getPopup()?.getContent(),
+//       });
+//     } else if (layer instanceof L.Polyline) {
+//       // Store polyline data (coordinates, color, etc.)
+//       polylinesData.push({
+//         type: "polyline",
+//         coordinates: layer.getLatLngs(),
+//         color: layer.options.color,
+//         weight: layer.options.weight,
+//         opacity: layer.options.opacity,
+//       });
+//     }
+//   });
+//   // Store markers and polylines data in IndexedDB
+//   if (markersData.length) localforage.setItem("mapMarkers", markersData);
+//   if (polylinesData.length) localforage.setItem("mapPolylines", polylinesData);
+// }
 
 function isInBoundingBox(lat: number, lng: number): boolean {
   return BOUNDING_BOXES.some(

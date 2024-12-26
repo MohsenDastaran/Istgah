@@ -33,7 +33,6 @@
 <script setup>
 const emit = defineEmits(["locate"]);
 const locate = (e) => {
-  console.log(e);
   emit("locate");
 };
 </script>
