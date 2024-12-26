@@ -22,6 +22,7 @@ const props = defineProps<{
 }>();
 
 const mapContainer = ref<HTMLElement | null>(null);
+
 const { map, initializeMap } = useMap(mapContainer);
 const { showUserLocation } = useUserLocation();
 const selectedStation = ref<Station | null>(null);
@@ -29,7 +30,9 @@ let visibleStations = ref<Station[]>(props.stations);
 
 function handleFilter(filtered: Station[]) {
   visibleStations.value = filtered;
-  renderStations();
+  console.log(filtered);
+
+  // renderStations();
 }
 
 function handleStationSelect(station: Station) {
@@ -40,7 +43,9 @@ function handleStationSelect(station: Station) {
   );
 }
 
-async function handleLocate() {
+async function handleLocate(e) {
+  console.log(e);
+
   if (!map.value) return;
   try {
     await showUserLocation(map.value);
@@ -82,7 +87,7 @@ async function renderStations() {
         if (nextCoordinate[0] && nextCoordinate[1]) {
           L.polyline(data, {
             color,
-            weight: 4,
+            weight: 5,
             opacity: 0.8,
           }).addTo(map.value);
         }

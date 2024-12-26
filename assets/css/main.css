@@ -28,13 +28,12 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #666;
 }
-
-/* Smooth transitions */
+/* 
 * {
   transition-property: background-color, border-color, color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}
+} */
 
 .station-icon {
   position: relative;
@@ -44,8 +43,7 @@
   overflow: hidden;
 }
 .station-icon.disabled {
-  filter: grayscale(100%); /* Convert to grayscale for a disabled look */
-  pointer-events: none; /* Prevent interaction */
+  filter: grayscale(100%);
 }
 
 .background-layer {
