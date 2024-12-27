@@ -20,9 +20,6 @@ useHead({
       content: "Tehran Public transportation App - حمل و نقل عمومی مترو تهران",
     },
   ],
-  bodyAttrs: {
-    class: "test",
-  },
 });
 
 const colorMode = useColorMode();

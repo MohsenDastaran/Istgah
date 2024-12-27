@@ -43,9 +43,7 @@ function handleStationSelect(station: Station) {
   );
 }
 
-async function handleLocate(e) {
-  console.log(e);
-
+async function handleLocate(e: any) {
   if (!map.value) return;
   try {
     await showUserLocation(map.value);
@@ -130,7 +128,6 @@ async function renderStations() {
       </div>
       `);
     }
-    // }
   }
 }
 

@@ -63,7 +63,13 @@ export function useMap(container: Ref<HTMLElement | null>) {
     if (typeof window === "undefined" || !container.value) return null;
 
     const L = await import("leaflet");
-    const newMap = L.map(container.value).setView([35.7, 51.4], 12);
+    const newMap = L.map(container.value, {
+      preferCanvas: true,
+      trackResize: false,
+      renderer: L.canvas(),
+      inertia: false,
+      zoomAnimationThreshold: 1,
+    }).setView([35.7, 51.4], 12);
 
     const isDark = colorMode.value === "dark";
 
